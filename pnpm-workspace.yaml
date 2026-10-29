@@ -1,0 +1,4 @@
+# Compilador usado pelo executor de testes TypeScript (tsx).
+# Os demais scripts de instalação continuam sem autorização implícita.
+allowBuilds:
+  esbuild: true

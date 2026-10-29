@@ -1,0 +1,37 @@
+:root { color-scheme: dark; background: #081529; color: #f4eddf; }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+.reserved-space { min-height: 100dvh; display: grid; place-content: center; padding: 2rem; text-align: center; font-family: Georgia, serif; }
+.reserved-space span { color: #d8bf82; font-size: 2rem; }
+.reserved-space h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 400; }
+.reserved-space p { color: #d8cbb5; line-height: 1.6; }
+
+/* Ajustes de semântica React, sem alterar a composição do livro. */
+[hidden] { display: none !important; }
+button.photo { padding: 0; text-align: left; font: inherit; color: inherit; }
+.photo-grid > button.photo { display: block; width: 100%; }
+.story-drawer { border: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; color: var(--cream, #f4eddf); }
+.story-drawer[open] { display: block; }
+.story-drawer::backdrop, .story-lightbox::backdrop { background: #071426dd; }
+.story-lightbox { padding: 32px; border: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; }
+.story-lightbox[open] { display: flex; }
+.story-lightbox img { max-width: 94vw; max-height: 88dvh; object-fit: contain; }
+.storage-error { color: #842e2e !important; border-left: 3px solid currentColor; padding: 8px 12px; }
+.preserve-lines { white-space: pre-wrap; overflow-wrap: anywhere; }
+.saved-photo { min-width: 0; }
+.saved-photo > .photo { width: 100%; }
+.saved-photo > .memory-delete { position: relative; display: block; margin: 8px 0 16px auto; }
+.moment-memory-copy, .moment-memory-phrase { display: block; }
+.letter-envelope small { display: block; margin-top: 8px; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #b9945c; outline-offset: 3px; }
+section[tabindex="-1"]:focus { outline: none; }
+.visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; border: 0 !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap !important; }
+.love-import:focus-within { outline: 3px solid #b9945c; outline-offset: 3px; }
+#perguntas .question-tabs button[aria-pressed="true"] small { color: #f0d9ad !important; }
+.legacy-import { margin: 24px 20px; padding: 18px 22px; border: 1px solid #b99a62; color: #f4eddf; background: #102138; border-radius: 8px; }
+.legacy-import summary { cursor: pointer; font-size: 18px; }
+.legacy-import p { color: #e6dcc8; font-size: 15px; line-height: 1.65; }
+.legacy-import-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.legacy-import-actions button,.legacy-import-actions label { border: 1px solid #b99a62; color: #f4eddf; background: #182f49; padding: 10px 14px; border-radius: 6px; cursor: pointer; font: inherit; }
+.legacy-import-actions input { display: block; width: 100%; margin-top: 8px; }

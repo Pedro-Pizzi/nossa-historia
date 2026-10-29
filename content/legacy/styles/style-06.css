@@ -1,0 +1,194 @@
+
+
+/* =========================================================
+   V7 — CORRESPONDÊNCIA EDITORIAL
+   Acolhimento redesenhado: adulto, íntimo, sem efeito craft.
+   ========================================================= */
+#acolhimento .paper{
+  background:
+    radial-gradient(circle at 90% 4%,rgba(126,70,80,.055),transparent 15rem),
+    linear-gradient(180deg,#f5ecdd 0%,#efe2d0 100%);
+  border-left-color:#7a414b;
+}
+#acolhimento .comfort-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  max-width:780px;
+  margin:34px auto 38px;
+}
+#acolhimento .comfort-card{
+  position:relative;
+  overflow:hidden;
+  padding:30px 34px 31px 38px;
+  background:
+    linear-gradient(90deg,rgba(121,65,75,.045),transparent 8px),
+    linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,252,244,.84)),
+    #fbf6ec;
+  border:1px solid rgba(126,101,72,.22);
+  border-left:2px solid #7b4650;
+  border-radius:2px;
+  box-shadow:0 12px 34px rgba(70,48,28,.075);
+}
+#acolhimento .comfort-card:before{
+  content:"";
+  position:absolute;
+  left:38px;
+  top:0;
+  width:68px;
+  height:1px;
+  background:#9b6d69;
+}
+#acolhimento .comfort-card:after{
+  content:"";
+  position:absolute;
+  right:26px;
+  bottom:21px;
+  width:38px;
+  height:38px;
+  border:1px solid rgba(123,70,80,.12);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(123,70,80,.04) 0 32%,transparent 34%);
+  opacity:.65;
+  pointer-events:none;
+}
+#acolhimento .comfort-card span{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 17px;
+  color:#7a4d52;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:12px;
+  line-height:1.2;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.145em;
+}
+#acolhimento .comfort-card span:before{
+  content:"";
+  flex:0 0 23px;
+  height:1px;
+  background:#b38b79;
+}
+#acolhimento .comfort-card p{
+  margin:0;
+  max-width:62ch;
+  color:#3d342c!important;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:20px;
+  line-height:1.72;
+  letter-spacing:.002em;
+}
+
+/* Cartinhas salvas: envelope textual mais discreto */
+#acolhimento .letter-envelope{
+  width:100%;
+  text-align:left;
+  border:0;
+  border-top:1px solid rgba(128,95,68,.24);
+  border-bottom:1px solid rgba(128,95,68,.16);
+  background:transparent;
+  border-radius:0;
+  padding:18px 2px 17px;
+  color:#5f3b40;
+  cursor:pointer;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:19px;
+}
+#acolhimento .letter-envelope small{
+  color:#807263;
+  font-size:12px;
+  letter-spacing:.06em;
+}
+#acolhimento .letter-content{font-size:19px;line-height:1.78;color:#3d342c}
+
+/* Formulário de nova carta com aparência de papelaria fina */
+#acolhimento .diary-letter{
+  position:relative;
+  max-width:780px;
+  margin:38px auto 8px;
+  padding:36px 38px 40px;
+  background:
+    linear-gradient(90deg,transparent 0 42px,rgba(128,80,72,.075) 43px,transparent 44px),
+    repeating-linear-gradient(180deg,transparent 0 36px,rgba(110,125,133,.055) 37px,transparent 38px),
+    #fffaf1;
+  border:1px solid rgba(153,125,87,.28);
+  border-radius:2px;
+  box-shadow:0 18px 42px rgba(63,42,24,.09);
+}
+#acolhimento .diary-letter:before{
+  content:"CARTA";
+  position:absolute;
+  right:34px;
+  top:30px;
+  color:rgba(115,66,75,.36);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.28em;
+}
+#acolhimento .diary-letter:after{display:none!important}
+#acolhimento .diary-letter h3{
+  margin:0 90px 8px 0;
+  color:#273a4d;
+  font-size:27px;
+  font-weight:500;
+}
+#acolhimento .diary-letter>p{
+  max-width:62ch;
+  margin-bottom:26px;
+  color:#6a5d50!important;
+  font-size:16px;
+  line-height:1.65;
+}
+#acolhimento .diary-letter label{
+  color:#6d4c4f;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+#acolhimento .diary-letter input,
+#acolhimento .diary-letter textarea,
+#acolhimento .diary-letter select{
+  background:rgba(255,255,255,.52)!important;
+  border:0!important;
+  border-bottom:1px solid rgba(117,91,65,.34)!important;
+  border-radius:0!important;
+  color:#342e29!important;
+  padding:11px 5px 9px!important;
+  box-shadow:none!important;
+  font-size:17px;
+}
+#acolhimento .diary-letter textarea{
+  min-height:150px;
+  resize:vertical;
+  line-height:1.75;
+}
+#acolhimento .diary-letter .book-save{
+  margin-top:20px;
+  background:#6f3e48!important;
+  border:1px solid #6f3e48!important;
+  color:#fff8eb!important;
+  border-radius:999px!important;
+  padding:11px 20px!important;
+  box-shadow:0 8px 18px rgba(90,50,58,.13);
+}
+
+@media(max-width:900px){
+  #acolhimento .comfort-grid{grid-template-columns:1fr!important;max-width:none}
+}
+@media(max-width:600px){
+  #acolhimento .comfort-grid{margin-top:26px;gap:14px}
+  #acolhimento .comfort-card{padding:25px 21px 27px 24px}
+  #acolhimento .comfort-card:before{left:24px;width:52px}
+  #acolhimento .comfort-card:after{right:15px;bottom:15px;width:30px;height:30px}
+  #acolhimento .comfort-card span{font-size:10.5px;letter-spacing:.12em;margin-bottom:14px}
+  #acolhimento .comfort-card span:before{flex-basis:18px}
+  #acolhimento .comfort-card p{font-size:18px;line-height:1.68;padding-right:10px}
+  #acolhimento .diary-letter{padding:30px 20px 34px;margin-top:30px}
+  #acolhimento .diary-letter:before{right:20px;top:24px}
+  #acolhimento .diary-letter h3{font-size:23px;margin-right:64px}
+  #acolhimento .letter-fields{grid-template-columns:1fr;gap:8px}
+}
+

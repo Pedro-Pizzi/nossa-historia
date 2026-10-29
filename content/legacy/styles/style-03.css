@@ -1,0 +1,222 @@
+
+/* =========================================================
+   NOSSA HISTÓRIA — DIREÇÃO VISUAL DEFINITIVA
+   Cada capítulo ganha uma linguagem própria, mantendo o mesmo universo.
+   ========================================================= */
+
+/* Fundo geral mais imersivo */
+body{
+  background:
+    radial-gradient(circle at 18% 10%,rgba(210,186,125,.10),transparent 21%),
+    radial-gradient(circle at 82% 28%,rgba(74,103,143,.12),transparent 24%),
+    linear-gradient(180deg,#06101e 0%,#0a1729 45%,#071321 100%);
+}
+#app{background:transparent}
+
+/* Capa: aparência de livro real */
+#opening{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:28px 18px;
+  background:
+    radial-gradient(circle at 22% 22%,rgba(244,225,175,.12),transparent 18%),
+    radial-gradient(circle at 74% 16%,rgba(150,181,218,.10),transparent 23%),
+    linear-gradient(180deg,rgba(4,12,24,.18),rgba(3,11,21,.72)),
+    linear-gradient(135deg,#081a31,#04101e 68%);
+}
+#opening .open-card{
+  width:min(780px,94vw);
+  min-height:min(760px,86svh);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:clamp(54px,8vw,92px) clamp(28px,8vw,88px);
+  border:1px solid rgba(222,199,144,.48);
+  border-radius:8px 28px 28px 8px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.03),transparent 3%,transparent 97%,rgba(0,0,0,.16)),
+    radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.07),transparent 45%),
+    #0c2139;
+  box-shadow:
+    -18px 0 0 #071729,
+    -22px 0 0 #c5a76a,
+    0 30px 90px rgba(0,0,0,.52),
+    inset 0 0 80px rgba(0,0,0,.28);
+  position:relative;
+  overflow:hidden;
+}
+#opening .open-card:before{
+  content:"";position:absolute;inset:20px;border:1px solid rgba(222,199,144,.22);border-radius:4px 20px 20px 4px;pointer-events:none
+}
+#opening .open-card:after{
+  content:"A  ♡  P";
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  color:#d7bd82;font:600 12px/1 Georgia,serif;letter-spacing:.42em;opacity:.85
+}
+.cover-seal{
+  width:74px;height:74px;border-radius:50%;display:grid;place-items:center;margin-bottom:24px;
+  background:radial-gradient(circle at 35% 30%,#8f4650,#6a2832 62%,#4d1821);
+  border:2px solid #aa6c74;color:#f1d9bf;font-size:33px;
+  box-shadow:inset 0 0 0 6px #5d1e2948,0 12px 24px #0005;
+}
+#opening .eyebrow{letter-spacing:.36em;font-size:11px;color:#d9c69b}
+#opening h1{max-width:640px;margin:22px auto 12px;font-size:clamp(58px,10vw,92px);line-height:.95;color:#f7ecd7;text-shadow:0 3px 24px #0009}
+#opening .quote{max-width:600px;font-size:clamp(25px,4vw,34px);color:#e8d8b8}
+#opening .btn{margin-top:9px;border:1px solid #c6a76a;background:#efe2c6;color:#16243a;text-shadow:none;font-weight:700;box-shadow:0 8px 20px #0003}
+#opening .btn:hover{background:#fff5df;color:#111f33}
+
+/* Topbar como lombada/índice de livro */
+.topbar{height:70px;padding:0 22px;background:rgba(5,15,28,.94);border-bottom:1px solid rgba(205,178,113,.34);box-shadow:0 10px 28px rgba(0,0,0,.16)}
+.menu-btn{width:42px;height:42px;border:1px solid rgba(220,198,145,.28);border-radius:50%;display:grid;place-items:center}
+.brand{font-size:32px;color:#f4e5c8}
+.progress{height:3px;background:#111f32}.progress span{background:linear-gradient(90deg,#8d6670,#d3ba7d)}
+.drawer{background:rgba(2,9,17,.77);backdrop-filter:blur(10px);padding:0}
+.drawer-inner{margin:0;width:min(420px,92vw);min-height:100svh;background:linear-gradient(180deg,#0d1e34,#091727);padding:30px 34px 50px;border-right:1px solid #c5a86b55;box-shadow:30px 0 80px #0006}
+.drawer h3{font-size:44px;color:#f1dfbd;margin-bottom:18px}
+.drawer a{position:relative;padding:13px 0 13px 42px;border-bottom:1px solid #ffffff14;font-size:22px;color:#f5ead8}
+.drawer a:before{content:"✦";position:absolute;left:10px;color:#b99a61;font-size:12px;top:18px}
+.drawer a:hover{padding-left:48px;color:#fff}
+
+/* Capítulos */
+.page{padding:80px 22px 110px;align-items:flex-start;position:relative}
+.page:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 10%,#fff 0 1px,transparent 1.4px),
+    radial-gradient(circle at 80% 30%,#d7c58f 0 1px,transparent 1.3px);
+  background-size:160px 160px,220px 220px;opacity:.20
+}
+.paper{
+  max-width:900px;
+  padding:clamp(52px,7vw,82px) clamp(34px,8vw,86px);
+  border:1px solid #dbc7a5;
+  border-left:10px solid #9a7a49;
+  border-radius:2px 18px 18px 2px;
+  background:
+    linear-gradient(90deg,rgba(121,79,35,.035),transparent 7%,transparent 94%,rgba(87,61,34,.035)),
+    radial-gradient(circle at 13% 8%,rgba(255,255,255,.75),transparent 30%),
+    #f5eddb;
+  box-shadow:
+    0 38px 90px rgba(0,0,0,.34),
+    inset 0 0 70px rgba(111,76,34,.05);
+}
+.paper:before{content:"";position:absolute;inset:14px;border:1px solid rgba(140,109,61,.20);border-radius:1px 12px 12px 1px;pointer-events:none}
+.paper:after{content:"✦";position:absolute;top:27px;right:30px;color:#aa8c59;font-size:18px;opacity:.75}
+.kicker{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;padding:6px 11px;border:1px solid #c5a56a;border-radius:999px;background:#f8f0de;color:#6f512f;font-size:10px;letter-spacing:.15em}
+h2{max-width:780px;font-size:clamp(46px,7vw,72px);line-height:.98;letter-spacing:-.025em}
+.lead{max-width:720px;font-size:27px;line-height:1.42;color:#443624}
+.divider{position:relative;height:1px;margin:38px 0;background:linear-gradient(90deg,transparent,#a98a56 20%,#a98a56 80%,transparent)}
+.divider:after{content:"♡";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:0 10px;background:#f5eddb;color:#7c4b52;font-size:14px}
+.next,.save,.book-save{border:1px solid #a9854d;background:#142943;color:#fff4dc;border-radius:999px;box-shadow:0 6px 14px #09182a24;transition:.2s}
+.next:hover,.save:hover,.book-save:hover{transform:translateY(-2px);background:#1d3859}
+
+/* 01 Carta: folha de correspondência com margem e selo */
+#carta .paper{background:
+  linear-gradient(90deg,transparent 0,transparent 66px,rgba(133,77,70,.22) 67px,transparent 68px),
+  repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(102,125,149,.09) 32px,transparent 33px),
+  #f8efdc;
+  border-left-color:#6f3943;
+}
+#carta .paper:after{content:"✉";font-size:20px;color:#6f3943}
+#carta .signature{font-size:50px;color:#722f3a}
+
+/* 02 Memórias: álbum fotográfico, mais escuro e muito diferente do resto */
+#memorias .paper{max-width:980px;background:#1a2738;border-color:#b89d67;border-left-color:#6d5734;color:#f5ead5;box-shadow:0 42px 100px #0008}
+#memorias .paper:before{border-color:#d8c28b30}
+#memorias .paper:after{content:"✦";color:#d4b874}
+#memorias h2,#memorias h3{color:#fff1d2}
+#memorias p,#memorias .lead{color:#e5dbc9}
+#memorias .kicker{background:#0f1d2e;border-color:#a98e58;color:#dbc58f}
+#memorias .photo-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:38px;align-items:start}
+#memorias .photo{min-height:0;aspect-ratio:4/3;border:10px solid #f3ead7;border-bottom-width:34px;background:#d9ccb7;box-shadow:0 16px 34px #0007;transform:none}
+#memorias .photo:nth-child(5n+1){grid-column:span 7;transform:rotate(-1.2deg)}
+#memorias .photo:nth-child(5n+2){grid-column:span 5;transform:translateY(28px) rotate(1.4deg)}
+#memorias .photo:nth-child(5n+3){grid-column:span 4;transform:rotate(.8deg)}
+#memorias .photo:nth-child(5n+4){grid-column:span 4;transform:translateY(16px) rotate(-1.1deg)}
+#memorias .photo:nth-child(5n+5){grid-column:span 4;transform:rotate(.6deg)}
+#memorias .photo img{min-height:0;height:100%;aspect-ratio:4/3;object-fit:cover}
+#memorias .photo .caption{bottom:-30px;background:transparent;color:#2f2922;text-shadow:none;padding:7px 8px 8px;text-align:center}
+#memorias .photo .caption strong{font-family:'Parisienne',cursive;font-size:22px;color:#392d24}
+#memorias .moment-gallery{background:#efe4cf;border-color:#a98a58;color:#2e271f}
+#memorias .moment-gallery h3{color:#20334a}
+#memorias .moment-gallery p{color:#4d4a45}
+
+/* 03 Diário / 05 Sonhos / 06 Estante: caderno encadernado */
+#diario .paper,#sonhos .paper,#biblioteca .paper{
+  border-left:18px solid #2a4668;
+  background:
+    linear-gradient(90deg,transparent 0,transparent 52px,rgba(166,90,91,.20) 53px,transparent 54px),
+    repeating-linear-gradient(to bottom,transparent 0,transparent 34px,rgba(73,112,154,.10) 35px,transparent 36px),
+    #f7f1e6;
+}
+#diario .paper:after,#sonhos .paper:after,#biblioteca .paper:after{content:"☾";color:#526f92}
+.book-tabs{gap:5px;margin:24px 0 28px;border-bottom:1px solid #bfae8f;padding-left:6px}
+.book-tabs button{position:relative;top:1px;border:1px solid #bfae8f;border-bottom:none;border-radius:8px 8px 0 0;padding:12px 18px 16px;background:#e7dcc8;color:#4b3e30;box-shadow:none}
+.book-tabs button.active{background:#243f62;color:#fff3dc;border-color:#243f62;box-shadow:none;transform:translateY(-3px)}
+.book-sheet{padding:28px;border:1px solid #ccb997;border-radius:3px;background:rgba(255,252,245,.80);box-shadow:4px 6px 0 rgba(74,55,34,.08)}
+.book-sheet textarea{background:rgba(255,255,255,.72);border:0;border-bottom:1px solid #a99777;border-radius:0;line-height:1.9}
+
+/* 04 Perguntas: universo/constelação com cartões claros */
+#perguntas .paper{max-width:980px;background:linear-gradient(180deg,#0e1f35,#102641);border-color:#a98c55;border-left-color:#805867;color:#f5ead7}
+#perguntas .paper:before{border-color:#d7c28b30}
+#perguntas .paper:after{content:"✦";color:#d5b873}
+#perguntas h2,#perguntas h3{color:#fff1d4}
+#perguntas p,#perguntas .lead,#perguntas .notebook-intro{color:#ded6c8}
+#perguntas .kicker{background:#152b46;border-color:#a98c55;color:#e0c98f}
+#perguntas .love-note{background:rgba(245,237,219,.10);border-left-color:#c8a966;color:#f0dfbf}
+#perguntas .love-person{background:#f3e8d3;border:1px solid #c5a873;color:#2f2922}
+#perguntas .love-person p{color:#4e463b}
+#perguntas .question-tabs{background:#0a1728;border-color:#6f7c8c;box-shadow:0 12px 28px #0004}
+#perguntas .question-tabs button{background:#132a45;border-color:#42566d;color:#f3e8d3}
+#perguntas .question-tabs button small{color:#b7c1ca}
+#perguntas .question-tabs button[aria-pressed="true"]{background:#e9dcc2;color:#24334a;border-color:#d0b375;transform:translateY(-3px)}
+#perguntas .question-tabs button[aria-pressed="true"] small{color:#6f604f}
+#perguntas .love-question{background:#f7efdf;border-color:#c9b181;box-shadow:0 9px 24px #0003}
+#perguntas .love-question-head{color:#253449}
+#perguntas .love-question-head small{color:#6b6257}
+#perguntas .love-category>p,#perguntas .heart-talk>p{color:#d8d2c7}
+#perguntas .love-answer label{color:#4e514f}
+#perguntas .love-history>div{background:#eee4d1}
+
+/* 07 Acolhimento: gaveta de cartas */
+#acolhimento .paper{background:#f2e6d5;border-left-color:#7e4650}
+#acolhimento .paper:after{content:"♡";color:#7e4650}
+#acolhimento .comfort-grid{gap:20px}
+#acolhimento .comfort-card{position:relative;padding:34px 24px 24px;background:linear-gradient(145deg,#fffaf0,#eadcc5);border:1px solid #c7ab7b;border-radius:3px;box-shadow:0 10px 20px #3b281315}
+#acolhimento .comfort-card:before{content:"";position:absolute;inset:0 0 auto 0;height:26px;background:linear-gradient(135deg,transparent 49%,rgba(123,83,61,.14) 50%),linear-gradient(225deg,transparent 49%,rgba(123,83,61,.14) 50%);background-size:50% 100%;background-position:left,right;background-repeat:no-repeat}
+#acolhimento .comfort-card span{color:#7b4a52}
+#acolhimento .diary-letter{position:relative;background:#fff7e9;border:1px solid #b99662;border-radius:2px;padding:32px;box-shadow:8px 10px 0 #72584d18}
+#acolhimento .diary-letter:after{content:"♡";position:absolute;right:24px;top:20px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#6f2f3a;color:#f2d7bd;border:2px solid #93505a}
+
+/* 08 Encontros: tom vinho, mais íntimo */
+#encontros .paper{background:linear-gradient(180deg,#f8eddf,#efe0cf);border-left-color:#7a3b49}
+#encontros .paper:after{content:"♡";color:#7a3b49}
+#encontros .love-note{background:#eee0d2;border-left-color:#7a3b49;color:#5b2b35}
+#encontros .date-draw{border-color:#c8a98a;background:radial-gradient(circle at 100% 0,#f2d8d8,transparent 38%),linear-gradient(135deg,#fff9ec,#efe0d0)}
+#encontros .date-draw-button{background:#703744;border-color:#703744}
+#encontros .challenge-card{background:linear-gradient(150deg,#fff8ee,#ead9cc);border-color:#c9af8d}
+#encontros .challenge-card .challenge-type{color:#7a3b49}
+
+/* Inputs com cara de escrita em papel */
+textarea,input,select{transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+textarea:focus,input:focus,select:focus{outline:none;border-color:#9f7a46!important;box-shadow:0 0 0 3px rgba(184,148,90,.18)}
+
+/* Mobile preserva personalidade sem sacrificar leitura */
+@media(max-width:700px){
+  #opening .open-card{min-height:82svh;border-radius:6px 20px 20px 6px;box-shadow:-10px 0 0 #071729,-13px 0 0 #c5a76a,0 24px 64px rgba(0,0,0,.48)}
+  #opening .open-card:after{bottom:18px}
+  .page{padding:34px 10px 64px}
+  .paper{padding:34px 19px 38px 24px;border-left-width:6px}
+  #carta .paper,#diario .paper,#sonhos .paper,#biblioteca .paper{background-position:0 0,0 0}
+  #memorias .paper,#perguntas .paper{padding-left:18px;padding-right:18px}
+  #memorias .photo-grid{display:grid;grid-template-columns:1fr;gap:28px}
+  #memorias .photo:nth-child(n){grid-column:auto;transform:none}
+  #memorias .photo{aspect-ratio:4/3}
+  #memorias .photo .caption{bottom:-30px}
+  .book-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:0}
+  .book-tabs button{flex:0 0 auto;min-width:102px}
+  #perguntas .question-tabs{grid-template-columns:repeat(2,1fr)}
+  #acolhimento .comfort-card{padding-top:32px}
+}
