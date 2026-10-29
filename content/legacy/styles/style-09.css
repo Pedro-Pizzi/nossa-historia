@@ -1,0 +1,15 @@
+
+/* v13 — opening illustration large and letter below */
+.cover-v10-letter-page{padding-top:74px!important;padding-bottom:92px!important}
+.cover-v10-letter-kicker{margin-bottom:30px!important}
+.cover-v10-letter-grid{display:flex!important;flex-direction:column!important;align-items:center!important;gap:34px!important;max-width:980px!important;margin:0 auto!important}
+.cover-v10-letter-art{width:min(100%,790px)!important;max-width:790px!important;margin:0 auto!important;padding:22px 22px 16px!important;box-shadow:0 26px 68px rgba(67,45,22,.14)!important}
+.cover-v10-letter-art img{width:100%!important;height:auto!important;display:block!important;object-fit:contain!important;max-height:none!important}
+.cover-v10-letter-paper{width:min(100%,790px)!important;max-width:790px!important;margin:0 auto!important;padding:48px 48px 48px 56px!important}
+.cover-v10-letter-paper h2{max-width:11ch!important}
+@media (max-width:760px){
+  .cover-v10-letter-page{padding:52px 14px 72px!important}
+  .cover-v10-letter-grid{gap:24px!important}
+  .cover-v10-letter-art{width:100%!important;padding:14px 14px 12px!important}
+  .cover-v10-letter-paper{width:100%!important;padding:32px 22px 36px 24px!important}
+}

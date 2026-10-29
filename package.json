@@ -1,0 +1,51 @@
+{
+  "name": "nossa-historia",
+  "version": "0.4.0",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "start:local": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "auth:setup": "tsx scripts/setup-auth.ts",
+    "db:setup": "tsx scripts/setup-database.ts",
+    "db:migrate": "tsx scripts/migrate-database.ts",
+    "db:import-book": "tsx scripts/import-private-book.ts",
+    "start:hosting": "next start --hostname 0.0.0.0",
+    "db:backup": "tsx scripts/backup-database.ts",
+    "db:restore": "tsx scripts/backup-database.ts --restore",
+    "verify:auth": "tsx scripts/verify-auth.ts",
+    "verify:database": "tsx scripts/verify-database.ts",
+    "verify:public": "node scripts/verify-public-source.mjs",
+    "test": "tsx --test tests/*.test.ts",
+    "verify:preview": "node scripts/verify-preview.mjs",
+    "verify:production": "node scripts/verify-preview.mjs --production",
+    "legacy:extract": "node scripts/extract-legacy.mjs",
+    "legacy:verify": "node scripts/verify-legacy.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "iron-session": "^9.0.1",
+    "next": "16.4.3",
+    "pg": "^8.23.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "server-only": "0.0.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "fake-indexeddb": "^6.2.6",
+    "parse5": "^8.0.1",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3"
+  }
+}

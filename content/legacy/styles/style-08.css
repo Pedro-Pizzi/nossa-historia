@@ -1,0 +1,11 @@
+
+@media(max-width:760px){
+  .cover-v10-hero{min-height:100svh!important;display:block!important;position:relative!important;overflow:hidden!important}
+  .cover-v10-photo{position:absolute!important;inset:0!important;height:auto!important}
+  .cover-v10-photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}
+  .cover-v10-hero:before{background:linear-gradient(180deg,rgba(3,9,16,.04) 0%,rgba(3,9,16,.05) 45%,rgba(5,15,25,.34) 60%,rgba(7,21,35,.93) 88%,#071523 100%)!important}
+  .cover-v10-copy{position:absolute!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;width:auto!important;padding:0 20px 72px!important;z-index:4!important}
+  .cover-v10-copy h1{max-width:9ch!important;text-shadow:0 3px 22px rgba(0,0,0,.55)!important}
+  .cover-v10-copy p{max-width:18em!important;text-shadow:0 2px 18px rgba(0,0,0,.62)!important}
+  .cover-v10-smallnote{bottom:18px!important;left:20px!important}
+}

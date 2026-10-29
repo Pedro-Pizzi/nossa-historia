@@ -1,0 +1,282 @@
+
+/* =========================================================
+   NOSSA HISTÓRIA — EDIÇÃO POÉTICA V4
+   Ilustrações originais do casal como páginas de um livro.
+   ========================================================= */
+:root{
+  --poetic-night:#07111f;--poetic-night2:#101f34;--poetic-ink:#30271f;
+  --poetic-paper:#f3ead8;--poetic-paper2:#fff8ec;--poetic-gold:#b9985f;
+  --poetic-wine:#7b3d47;--poetic-green:#667660;--poetic-blue:#667c97;
+  --poetic-peach:#c98366;--poetic-shadow:0 28px 80px rgba(3,10,18,.26);
+}
+body{background:var(--poetic-night);}
+#app{background:
+ radial-gradient(circle at 15% 12%,rgba(181,151,96,.11),transparent 24rem),
+ radial-gradient(circle at 85% 48%,rgba(97,122,153,.12),transparent 27rem),
+ linear-gradient(180deg,#091526,#102039 54%,#091525);}
+.topbar{height:68px;background:rgba(6,15,29,.92);border-bottom:1px solid rgba(213,188,130,.24);box-shadow:0 8px 30px rgba(0,0,0,.18)}
+.topbar .brand{letter-spacing:.02em}.progress{height:3px}.progress span{background:linear-gradient(90deg,#8d6d3d,#e1c890)}
+
+/* cover: an illustrated book spread, not a wall of text */
+#opening{min-height:100svh;padding:clamp(18px,4vw,42px);align-items:center;background:
+ radial-gradient(circle at 18% 18%,rgba(214,184,121,.12),transparent 25rem),
+ radial-gradient(circle at 80% 25%,rgba(72,106,143,.20),transparent 28rem),
+ linear-gradient(155deg,#06101d,#10233c 55%,#07111f);}
+#opening .moon{opacity:.55;filter:blur(.2px)}
+#opening .open-card{width:min(1180px,100%);max-width:none;display:grid;grid-template-columns:minmax(320px,.9fr) minmax(420px,1.1fr);gap:0;align-items:stretch;background:#efe5d0;border:1px solid rgba(218,190,133,.55);box-shadow:0 40px 120px rgba(0,0,0,.52);border-radius:3px 18px 18px 3px;overflow:hidden;text-align:left;position:relative;min-height:min(760px,88svh)}
+#opening .open-card:before{content:"";position:absolute;left:42%;top:0;bottom:0;width:1px;background:linear-gradient(transparent,rgba(92,68,39,.24),transparent);z-index:4;pointer-events:none}
+.poetic-cover-art{margin:0;position:relative;min-height:100%;background:#d8c5a2;overflow:hidden}
+.poetic-cover-art img{width:100%;height:100%;min-height:100%;object-fit:cover;display:block;filter:saturate(.9) sepia(.04)}
+.poetic-cover-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 76%,rgba(38,29,20,.18)),linear-gradient(180deg,transparent 60%,rgba(25,20,14,.35));pointer-events:none}
+.poetic-cover-art figcaption{position:absolute;left:28px;right:28px;bottom:24px;z-index:2;color:#fff8e8;font-size:14px;line-height:1.5;text-shadow:0 2px 12px #000;font-style:italic;letter-spacing:.02em}
+.poetic-cover-copy{position:relative;padding:clamp(34px,5vw,74px);color:#332b22;background:
+ linear-gradient(90deg,rgba(104,78,46,.05),transparent 22px),
+ radial-gradient(circle at 90% 5%,rgba(214,188,135,.25),transparent 18rem),#f3ead8;overflow:auto}
+.poetic-cover-copy:after{content:"✦   ☾   ✦";position:absolute;right:28px;top:20px;color:#a68752;letter-spacing:.4em;font-size:10px;opacity:.85}
+#opening .eyebrow{color:#876a3c;opacity:1;font-weight:600}
+#opening .open-card h1{font-size:clamp(44px,6vw,78px);color:#26364a;line-height:.92;margin:18px 0 20px;max-width:9ch}
+#opening .open-card .quote{font-size:clamp(23px,3vw,33px);color:#6b3b43;max-width:17ch;margin:0 0 28px;font-style:italic}
+#opening .open-card p{color:#554c40;font-size:17px;line-height:1.72;margin:0 0 20px;max-width:60ch}
+#opening .cover-seal{background:#7b3d47!important;box-shadow:0 8px 18px rgba(78,27,37,.26);border:1px solid #9e5a63!important}
+#opening .btn{background:#10233c;color:#f6eddc;border-color:#a88b58;margin-top:16px}
+#opening .btn:hover{background:#7b3d47;color:#fff6e7}
+.opening-letter{margin:22px 0 4px;border-top:1px solid #d1c09e;border-bottom:1px solid #d1c09e;padding:8px 0}
+.opening-letter summary{cursor:pointer;color:#775446;font-size:16px;font-style:italic;padding:10px 0;list-style:none}.opening-letter summary::-webkit-details-marker{display:none}.opening-letter summary:after{content:"  ↘";color:#a48755}.opening-letter[open] summary:after{content:"  ↗"}
+.opening-letter-body{padding:12px 0 2px}
+#opening .music-hint,#opening .scroll-note{color:#745d42!important;opacity:.8!important}
+
+/* chapter pages */
+.page{padding:clamp(38px,6vw,86px) 18px;align-items:flex-start}
+.paper{max-width:940px;padding:clamp(30px,6vw,72px);background:
+ linear-gradient(90deg,transparent 0,transparent 38px,rgba(177,143,83,.20) 39px,transparent 40px),
+ radial-gradient(ellipse at 14% 4%,rgba(255,252,240,.96),transparent 48%),#f1e7d5;
+ border:1px solid #dfcfad;border-left:7px solid #a18352;border-radius:4px 14px 14px 4px;box-shadow:var(--poetic-shadow);overflow:visible}
+.paper:before{opacity:.10}
+.paper h2{color:#22344b;letter-spacing:-.02em;margin-bottom:12px}
+.paper h3{color:#30445b}.paper p{color:#4a4035}
+.kicker,.chapter-mark{color:#8c6b3e;letter-spacing:.18em;font-weight:600}
+.lead,.memory-intro,.notebook-intro{color:#584b3c!important;max-width:68ch}
+.next{box-shadow:0 8px 20px rgba(7,19,35,.14);transition:.2s}.next:hover{transform:translateY(-2px)}
+
+.poetic-epigraph{display:flex;gap:12px;align-items:flex-start;margin:-2px 0 25px;padding:12px 0;border-bottom:1px solid rgba(151,122,75,.22);color:#7c684b;max-width:680px}
+.poetic-epigraph span{font-size:19px;color:#9c714e;line-height:1}.poetic-epigraph em{font-size:14px;line-height:1.55;font-family:Georgia,serif}
+
+/* illustrated scenes behave like book plates */
+.poetic-scene{margin:30px auto 34px;position:relative;max-width:760px;background:#fff8ea;border:10px solid #fff8ea;box-shadow:0 18px 46px rgba(57,39,19,.18);transform:rotate(-.45deg)}
+.poetic-scene:nth-of-type(even){transform:rotate(.45deg)}
+.poetic-scene img{display:block;width:100%;height:auto;max-height:640px;object-fit:cover}
+.poetic-scene figcaption{padding:13px 15px 8px;color:#705f47;font-size:14px;line-height:1.55;font-style:italic;text-align:center;background:#fff8ea}
+.poetic-scene:after{content:"";position:absolute;inset:-18px 32% auto;height:28px;background:rgba(217,194,148,.46);transform:rotate(-2deg);z-index:3;mix-blend-mode:multiply}
+.poetic-scene--diary{max-width:590px;margin-left:auto;margin-right:0}.poetic-scene--diary img{max-height:520px}
+.poetic-scene--dreams{max-width:720px}.poetic-scene--rain{max-width:720px;transform:rotate(0)}
+.poetic-scene--date{max-width:620px;margin-right:0}.poetic-scene--choice{max-width:560px;margin-left:auto;margin-right:auto}
+
+/* 02 memories: scrapbook instead of a rigid photo grid */
+#memorias .paper{background:#182233;border-color:#6f7d91;border-left-color:#aa8a56;color:#efe6d7}
+#memorias .paper h2,#memorias .paper h3,#memorias .paper .lead,#memorias .paper>p{color:#efe4d3!important}#memorias .kicker,#memorias .poetic-epigraph{color:#c9ad7d}
+#memorias .photo-grid{gap:24px 18px;align-items:start}
+#memorias .photo{border:11px solid #f4ead7;background:#f4ead7;box-shadow:0 13px 30px #0006;min-height:250px}
+#memorias .photo:nth-child(4n+1){transform:rotate(-1.6deg)}#memorias .photo:nth-child(4n+2){transform:rotate(1.15deg) translateY(18px)}#memorias .photo:nth-child(4n+3){transform:rotate(.65deg)}#memorias .photo:nth-child(4n){transform:rotate(-.85deg) translateY(8px)}
+#memorias .photo .caption{position:static;background:#f4ead7;color:#4d4133;text-shadow:none;padding:13px 8px 5px;min-height:56px}#memorias .photo .caption strong{font-family:'Parisienne',cursive;color:#6d2c34;font-size:25px}#memorias .photo .caption span{color:#8a7b66}
+#memorias .moment-gallery{background:#efe2cb;border-color:#b99d70}
+
+/* Diary and dreams feel like a handwritten notebook */
+#diario .paper,#sonhos .paper{background:
+ repeating-linear-gradient(to bottom,transparent 0,transparent 35px,rgba(107,132,159,.12) 36px,transparent 37px),
+ linear-gradient(90deg,transparent 0,transparent 44px,rgba(157,85,83,.18) 45px,transparent 46px),#f4f0e8;border-left-color:#5e7793}
+.book-tabs button{border-radius:999px!important;background:#ebe3d4!important;border-color:#c6b38c!important;color:#4d4235!important}.book-tabs button.active{background:#334f6d!important;color:#fff8e8!important}
+.book-sheet{background:rgba(255,252,244,.84)!important;border:1px solid #d5c7aa!important;border-left:4px solid #8ba0b7!important;box-shadow:0 8px 18px rgba(48,62,79,.06)}
+
+/* Questions: quiet night-sky frame around the paper */
+#perguntas{background:radial-gradient(circle at 18% 12%,rgba(238,220,174,.12),transparent 20rem),linear-gradient(180deg,#0a1729,#12243b)}
+#perguntas .paper{box-shadow:0 30px 90px rgba(0,0,0,.38);border-color:#c9b17d;position:relative}
+#perguntas .paper:after{content:"✦ · ｡ ☾ ｡ · ✦";position:absolute;right:30px;top:28px;color:#b99a62;letter-spacing:.22em;font-size:11px}
+.question-tabs{border:1px solid #d5c5a7;background:#ece2cf;border-radius:16px;padding:8px;gap:6px}.question-tabs button{border-radius:12px!important}.question-tabs button[aria-pressed="true"]{background:#203b59!important;color:#fff!important}
+.love-question{border-radius:14px!important;box-shadow:0 7px 16px rgba(68,49,26,.05)}
+
+/* Library is an old reading room */
+#biblioteca .paper{background:radial-gradient(circle at 90% 3%,rgba(115,82,49,.14),transparent 17rem),#efe5d2;border-left-color:#795941}
+#favorite-nav{padding:10px;background:#dfd0b7;border:1px solid #c4ad87;border-radius:8px}#favorite-nav button{background:#f8f0e1!important;border-color:#bfa77e!important;color:#604b35!important}
+
+/* Comfort: rain illustration and letter cards */
+#acolhimento{background:linear-gradient(180deg,#16283b,#0c1828)}
+#acolhimento .paper{border-left-color:#6f8295}.comfort-card{border-radius:12px!important;background:linear-gradient(145deg,#faf5ea,#e9edf0)!important;border-color:#c8c6ba!important;box-shadow:0 9px 20px rgba(43,52,62,.08)!important}.diary-letter{border-radius:10px!important;background:#f1e6d3!important}
+
+/* Dates: warm, blush, intimate */
+#encontros .paper{background:radial-gradient(circle at 90% 5%,rgba(133,59,70,.10),transparent 18rem),#f3e7d6;border-left-color:#7b3d47}
+#encontros .love-note{background:#ead7d1!important;border-left-color:#7b3d47!important;color:#5f3b3e!important}
+#encontros .date-draw{background:linear-gradient(145deg,#713b45,#9a5960)!important;color:#fff8ed!important;box-shadow:0 16px 34px rgba(83,37,48,.18)}
+#encontros .date-draw h3,#encontros .date-draw p{color:#fff8ed!important}
+
+/* New chapters: each has a clear emotional identity */
+.memory-chapter .memory-form{border-radius:14px;background:rgba(255,250,239,.78);border:1px solid #d3c2a2;box-shadow:0 10px 26px rgba(60,42,21,.07)}
+.memory-action{border-radius:999px!important;box-shadow:0 8px 18px rgba(23,38,56,.12)}
+#escolha{background:radial-gradient(circle at 50% 16%,rgba(151,76,85,.15),transparent 24rem),linear-gradient(180deg,#0c1728,#14263e)}
+#escolha .paper{border-left-color:#7b3d47}.choice-symbol{background:#7b3d47!important;box-shadow:0 10px 24px rgba(91,39,49,.20)}#choice-random{border:1px dashed #b89a69!important;background:#f7eddb!important}
+#essencia .paper{background:radial-gradient(circle at 85% 8%,rgba(116,130,92,.12),transparent 18rem),#f3ead8;border-left-color:#6f7c5e}.essence-cloud>div{background:#edf0e5!important;border-color:#bcc4ac!important}
+#linha .paper{border-left-color:#6b7f95}.timeline:before{background:#a78958!important}.timeline-item{background:#f8f0e1!important;border-color:#c7b795!important;box-shadow:0 10px 26px rgba(40,50,61,.07)!important}
+#marcos .paper{border-left-color:#b07a53}.milestone-grid>div{border-radius:10px!important;background:#f3e6d4!important}
+#capsulas{background:radial-gradient(circle at 50% 12%,rgba(213,187,129,.16),transparent 22rem),linear-gradient(180deg,#0b1727,#122239)}#capsulas .paper{border-left-color:#9f7b44}#capsulas .memory-form{position:relative;background:#f2e4cb;box-shadow:0 14px 30px rgba(69,43,21,.12)}#capsulas .memory-form:after{content:"✉";position:absolute;right:22px;top:14px;font-size:34px;color:#9b7747;opacity:.35}.capsule-item{border-radius:10px!important;background:#efe0c6!important}
+#admiracao .paper{border-left-color:#a66f6f}.admiration-wall>div{background:linear-gradient(145deg,#fff7e9,#f2dfd9)!important;border-color:#d8b9ad!important}
+#checkin .paper{border-left-color:#70819a}.check-question{background:#f6f0e5!important;border-radius:10px;padding:13px 15px;margin:10px 0}
+#lembrar{background:radial-gradient(circle at 50% 18%,rgba(208,183,124,.16),transparent 18rem),linear-gradient(180deg,#071322,#10233c)}#lembrar .paper{text-align:center;border-left-color:#b9995d}.remember-oracle{background:#13263e!important;border:1px solid #ad8b52!important;color:#eee0c8!important;box-shadow:inset 0 0 50px rgba(0,0,0,.22),0 14px 35px rgba(0,0,0,.18)}.remember-oracle p,.remember-oracle small{color:#eee0c8!important}
+#neste-dia .paper{border-left-color:#8e7858}.on-this-day>div{background:#f0e4cf!important;border-radius:10px!important}
+#vozes .paper{border-left-color:#607a94}.voice-controls{background:#e9e2d5;padding:14px;border:1px solid #c9baa1;border-radius:12px}.voice-controls button,.voice-upload{border-radius:999px!important}
+
+/* final = quiet night, fewer effects, more feeling */
+.final{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 28%,#1b3553 0,#0b182a 44%,#050d18 100%)}
+.final:before,.final:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#f4ead5 1px,transparent 1.6px);background-size:93px 93px;opacity:.18}.final:after{background-size:151px 151px;transform:translate(37px,22px);opacity:.1}.final .inner{position:relative;z-index:2}.final-poetic-line{font-style:italic;color:#d7cbb7!important;max-width:600px;margin:28px auto}
+
+/* Drawer: resembles book contents */
+.drawer{background:rgba(5,14,26,.97)}.drawer-inner{max-width:680px}.drawer a{font-size:22px;padding:12px 4px;color:#efe3cd;border-color:rgba(218,190,130,.14)}.drawer a:hover{color:#e4c891;padding-left:10px}
+
+/* Mobile */
+@media(max-width:760px){
+ #opening{padding:0;align-items:stretch}
+ #opening .open-card{grid-template-columns:1fr;min-height:100svh;border-radius:0;border:0}
+ #opening .open-card:before{display:none}
+ .poetic-cover-art{min-height:52svh;max-height:58svh}
+ .poetic-cover-art img{min-height:52svh;object-position:center 40%}
+ .poetic-cover-art figcaption{font-size:12px;left:18px;right:18px;bottom:16px}
+ .poetic-cover-copy{padding:34px 24px 44px;overflow:visible}
+ #opening .open-card h1{font-size:clamp(43px,14vw,62px);max-width:10ch}
+ #opening .open-card .quote{font-size:25px;max-width:18ch}
+ #opening .open-card p{font-size:16px}
+ .page{padding:36px 10px}
+ .paper{padding:30px 20px 34px 28px;border-left-width:5px}
+ .poetic-scene,.poetic-scene--diary,.poetic-scene--date,.poetic-scene--choice{margin:26px -8px 30px;max-width:none;border-width:7px;transform:none!important}
+ .poetic-scene img{max-height:520px}
+ .poetic-scene:after{height:22px;inset:-14px 31% auto}
+ #memorias .photo-grid{grid-template-columns:1fr;gap:18px}
+ #memorias .photo:nth-child(n){transform:none!important}
+ .memory-grid-2,.memory-grid-3{grid-template-columns:1fr!important}
+ .drawer{padding:18px}.drawer h3{font-size:36px}
+}
+@media(max-width:420px){.poetic-cover-art{min-height:48svh}.poetic-cover-copy{padding:30px 20px 40px}.paper{padding-left:23px;padding-right:17px}.poetic-epigraph em{font-size:13px}}
+
+/* ====== V5 refinements: self-contained illustrations + prettier chapter staging ====== */
+body{overflow-x:hidden}
+.paper{position:relative}
+.paper:after{content:"";position:absolute;inset:14px 14px 14px auto;width:90px;pointer-events:none;opacity:.05;
+ background:radial-gradient(circle at 25% 25%,#9c7a43 0 2px,transparent 3px),radial-gradient(circle at 70% 55%,#9c7a43 0 2px,transparent 3px),radial-gradient(circle at 45% 85%,#9c7a43 0 2px,transparent 3px);background-size:90px 90px}
+.poetic-scene{overflow:hidden;border-radius:18px;transform:none!important;box-shadow:0 24px 60px rgba(31,23,15,.18);border:1px solid rgba(156,126,78,.18);background:linear-gradient(180deg,#fffdf8,#f3e7d4)}
+.poetic-scene:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.28),transparent 26%,transparent 74%,rgba(57,33,12,.08));z-index:2}
+.poetic-scene:after{content:"✦";display:grid;place-items:center;position:absolute;right:14px;top:14px;width:38px;height:38px;border-radius:999px;background:rgba(255,248,234,.92);border:1px solid rgba(171,139,83,.35);box-shadow:0 8px 16px rgba(35,24,11,.12);color:#9a7642;font-size:14px;z-index:3}
+.poetic-scene img{max-height:none;aspect-ratio:4/5;object-fit:cover;background:#ead9bc}
+.poetic-scene figcaption{padding:16px 18px 18px;font-size:14px;line-height:1.6;background:linear-gradient(180deg,#fffaf0,#f7efe0);border-top:1px solid rgba(172,143,91,.18)}
+.poetic-scene--diary,.poetic-scene--dreams,.poetic-scene--rain,.poetic-scene--date,.poetic-scene--choice{max-width:760px;margin:28px auto 38px}
+
+/* section-specific bands behind main illustrations */
+#diario .poetic-scene,#sonhos .poetic-scene,#acolhimento .poetic-scene,#encontros .poetic-scene,#escolha .poetic-scene{
+  position:relative;
+}
+#diario .poetic-scene::selection,#sonhos .poetic-scene::selection,#acolhimento .poetic-scene::selection,#encontros .poetic-scene::selection,#escolha .poetic-scene::selection{background:inherit}
+#diario .notebook-intro,#sonhos .notebook-intro,#acolhimento .lead,#encontros .lead,#escolha .memory-intro{position:relative;padding-left:18px}
+#diario .notebook-intro:before,#sonhos .notebook-intro:before,#acolhimento .lead:before,#encontros .lead:before,#escolha .memory-intro:before{content:"";position:absolute;left:0;top:.3em;bottom:.25em;width:4px;border-radius:999px;background:linear-gradient(180deg,#bf9456,#e8d0a0)}
+
+/* stronger chapter moods */
+#diario .paper{box-shadow:0 26px 70px rgba(61,77,104,.18)}
+#sonhos .paper{box-shadow:0 26px 70px rgba(80,63,38,.16)}
+#acolhimento .paper{box-shadow:0 30px 84px rgba(8,16,26,.36)}
+#encontros .paper{box-shadow:0 28px 80px rgba(87,42,54,.20)}
+#escolha .paper{box-shadow:0 28px 80px rgba(8,16,26,.34)}
+
+/* opening page more book-like */
+#opening .open-card{overflow:hidden}
+#opening .open-card:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 8%,transparent 92%,rgba(0,0,0,.06));z-index:5}
+.poetic-cover-art{background:linear-gradient(180deg,#d8c5a2,#c4aa80)}
+.poetic-cover-art img{filter:saturate(.95) contrast(1.02)}
+.poetic-cover-copy{background:
+ linear-gradient(90deg,rgba(104,78,46,.05),transparent 22px),
+ radial-gradient(circle at 90% 5%,rgba(214,188,135,.25),transparent 18rem),
+ linear-gradient(180deg,#f7efe1,#f2e7d3 38%,#ecddc3)}
+.opening-letter{background:rgba(255,250,240,.52);padding:10px 16px;border:1px solid rgba(181,149,94,.24);border-radius:14px}
+.memory-cover-strip{gap:12px}
+.memory-cover-chip{box-shadow:0 8px 18px rgba(69,48,21,.08)}
+
+/* forms and boxes prettier */
+.memory-form,.book-sheet,.comfort-card,.diary-letter,.timeline-item,.milestone-grid>div,.capsule-item,.admiration-wall>div,.on-this-day>div{border-radius:16px!important}
+textarea,input,select{box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+button.book-save,.memory-action,.next,.btn{transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+button.book-save:hover,.memory-action:hover,.next:hover,.btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(26,34,44,.16)}
+
+/* gallery captions nicer */
+#memorias .photo .caption{border-top:1px solid rgba(124,95,54,.15)}
+#memorias .photo img{aspect-ratio:4/5}
+
+/* mobile polish */
+@media(max-width:760px){
+  .poetic-scene,.poetic-scene--diary,.poetic-scene--dreams,.poetic-scene--rain,.poetic-scene--date,.poetic-scene--choice{margin:24px 0 30px;max-width:none;border-width:1px;border-radius:16px}
+  .poetic-scene img{aspect-ratio:auto;min-height:320px;max-height:none}
+  .poetic-scene figcaption{font-size:13px;padding:14px 14px 16px}
+  .paper:after{display:none}
+  .opening-letter{padding:8px 12px;border-radius:12px}
+}
+
+
+/* =========================================================
+   EDIÇÃO POÉTICA V6 — ícones ilustrados + capítulos visuais
+   ========================================================= */
+:root{
+  --v6-navy:#1f3653;
+  --v6-navy-deep:#142a45;
+  --v6-gold:#b7965e;
+  --v6-paper:#f6eddd;
+  --v6-paper-2:#fffaf0;
+  --v6-line:#cfbb95;
+}
+
+/* illustrated navigation icons */
+.icon-medallion{width:30px;height:30px;min-width:30px;border-radius:999px;display:inline-grid;place-items:center;background:rgba(255,250,239,.92);border:1px solid rgba(183,150,94,.35);box-shadow:0 4px 12px rgba(70,50,24,.08);overflow:hidden}
+.icon-medallion img{width:24px;height:24px;object-fit:contain;display:block}
+.book-tabs button,.icon-nav button{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
+.book-tabs button{padding:9px 15px 9px 10px!important;min-height:50px;border-radius:999px!important}
+.book-tabs button.active{background:var(--v6-navy)!important;color:#fff7e7!important;border-color:var(--v6-navy)!important;box-shadow:0 8px 18px rgba(31,54,83,.18)!important;transform:translateY(-1px)}
+.book-tabs button.active .icon-medallion{background:#fff8e8;border-color:#d8c39b;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+
+#favorite-nav.icon-nav{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;padding:11px!important;background:linear-gradient(180deg,#e7d9bf,#ddcbaa)!important;border:1px solid #c9b284!important;border-radius:16px!important;box-shadow:inset 0 1px rgba(255,255,255,.5),0 8px 18px rgba(80,57,25,.05)}
+#favorite-nav.icon-nav button{min-width:0;min-height:60px;padding:8px 10px!important;border:1px solid #c8b28a!important;border-radius:14px!important;background:rgba(255,250,239,.82)!important;color:#4b4033!important;font-weight:600;box-shadow:0 4px 10px rgba(72,51,25,.04)}
+#favorite-nav.icon-nav button.active{background:var(--v6-navy)!important;color:#fff9ec!important;border-color:var(--v6-navy)!important;box-shadow:0 8px 18px rgba(31,54,83,.18)}
+#favorite-nav.icon-nav button.active .icon-medallion{background:#fff9ec;border-color:#d6bf93}
+
+/* epigraph icon instead of emoji */
+.poetic-epigraph .epigraph-icon{width:32px;height:32px;display:inline-grid;place-items:center;flex:0 0 32px;border-radius:999px;background:#f8efdf;border:1px solid #d6c29d}
+.poetic-epigraph .epigraph-icon img{width:24px;height:24px;object-fit:contain}
+
+/* new chapter illustrations */
+.poetic-scene--chapter{max-width:720px;margin:28px auto 42px;border-radius:22px;overflow:hidden;background:#fffaf0;border:1px solid rgba(171,139,83,.22);box-shadow:0 24px 60px rgba(48,34,18,.16)}
+.poetic-scene--chapter img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.poetic-scene--chapter figcaption{background:linear-gradient(180deg,#fffaf1,#f3e5cf);padding:15px 18px 17px;color:#675641;font-size:14px;font-style:italic;text-align:center;border-top:1px solid rgba(164,129,75,.16)}
+.poetic-scene--chapter:after{content:"✦";position:absolute;right:16px;top:16px;display:grid;place-items:center;width:38px;height:38px;border-radius:999px;background:rgba(255,249,235,.94);border:1px solid rgba(181,145,82,.34);color:#a77e42;box-shadow:0 6px 16px rgba(56,38,17,.11);z-index:3}
+
+/* chapter-specific refinement */
+#carta .paper{background:radial-gradient(circle at 86% 4%,rgba(152,94,76,.08),transparent 20rem),linear-gradient(180deg,#f7edde,#f1e3cf);border-left-color:#92705b}
+#carta .poetic-scene--letters{max-width:680px}
+#memorias .poetic-scene--album{max-width:690px;background:#eee3d1;border-color:#a98d64}
+#memorias .poetic-scene--album figcaption{color:#554635;background:#efe3cf}
+#biblioteca .poetic-scene--library{max-width:690px}
+#biblioteca .book-sheet{border-left-color:#7c8c79!important}
+#capsulas .poetic-scene--capsule{max-width:670px}
+#vozes .poetic-scene--voices{max-width:650px}
+
+/* unify controls so the new icons feel intentional */
+.book-top{border-radius:14px!important;background:rgba(255,250,241,.55)!important;padding:14px 16px!important;border:1px solid rgba(191,169,132,.28)!important}
+.book-sheet{border-radius:18px!important;padding:24px!important}
+.book-sheet h3{font-size:clamp(28px,4vw,40px)!important;letter-spacing:-.01em}
+.book-nav{margin-top:18px!important}
+
+/* smaller ornamental symbols should remain typographic, not emoji-like */
+.kicker,.chapter-mark{font-variant-caps:small-caps;letter-spacing:.18em}
+
+@media(max-width:760px){
+  #favorite-nav.icon-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:9px!important}
+  #favorite-nav.icon-nav button{min-height:56px;font-size:15px}
+  .book-tabs{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important;overflow:visible!important;padding-left:0!important;border-bottom:0!important}
+  .book-tabs button{min-width:0!important;padding:8px 7px!important;font-size:14px!important;flex-direction:column;gap:4px;line-height:1.1}
+  .book-tabs .icon-medallion{width:28px;height:28px;min-width:28px}.book-tabs .icon-medallion img{width:22px;height:22px}
+  .poetic-scene--chapter{margin:24px 0 32px;max-width:none;border-radius:18px}
+  .poetic-scene--chapter img{aspect-ratio:auto;min-height:300px}
+  .book-top{padding:12px 13px!important}
+  .book-sheet{padding:20px 17px!important}
+}
+

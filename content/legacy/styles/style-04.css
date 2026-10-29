@@ -1,0 +1,135 @@
+
+/* =========================================================
+   NOSSA HISTÓRIA v3 — memória viva
+   Novos capítulos afetivos, mantendo a identidade Cartas sob Estrelas
+   ========================================================= */
+:root{--wine2:#71343f;--wine3:#54232d;--warm:#fff9ed;--sand:#e7d6b7;--inkblue:#162a43;--mist:#d8e1ec}
+.memory-cover-strip{margin:28px auto 8px;max-width:680px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;text-align:left}
+.memory-cover-card{min-height:105px;padding:14px 15px;border:1px solid rgba(213,188,130,.45);background:rgba(7,20,38,.56);backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+.memory-cover-card small{display:block;color:#d5bc82;text-transform:uppercase;letter-spacing:.13em;font-size:9px;margin-bottom:8px}
+.memory-cover-card span{display:block;color:#f5eddd;font:16px/1.35 'Cormorant Garamond',serif}
+.memory-cover-card em{display:block;color:#baaF9a;font-size:11px;margin-top:7px;font-style:normal}
+
+/* novos capítulos */
+.memory-chapter{position:relative}
+.memory-chapter .paper{max-width:900px}
+.memory-chapter .chapter-mark{display:inline-flex;align-items:center;gap:9px;margin-bottom:20px;color:#80663b;font:600 10px/1.2 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.memory-chapter .chapter-mark:before{content:'✦';font-family:serif;color:#b18a4d}
+.memory-intro{max-width:690px;font-size:20px;line-height:1.65;color:#4c4339}
+.memory-form{margin:28px 0;padding:24px;border:1px solid #d8c5a4;background:linear-gradient(145deg,#fffaf0,#f3e8d6);box-shadow:5px 7px 0 #76542a0d}
+.memory-form h3{margin-top:0}
+.memory-form label{display:block;margin:14px 0 6px;color:#5d5142;font-size:14px;font-weight:600}
+.memory-form select,.memory-form input,.memory-form textarea{width:100%;box-sizing:border-box;border:1px solid #cdbb9d;background:#fffdf7;padding:12px 13px;color:#30271f;font:17px/1.45 'Cormorant Garamond',serif;border-radius:2px}
+.memory-form textarea{min-height:115px;resize:vertical}
+.memory-form .memory-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.memory-form .memory-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.memory-action{margin-top:14px;border:1px solid #9b8051;background:#10213a;color:#f5eddd;padding:11px 18px;font:600 16px 'Cormorant Garamond',serif;cursor:pointer;border-radius:2px}
+.memory-action.secondary{background:transparent;color:#26364c;border-color:#9e8d70}
+.memory-status{min-height:18px;margin:10px 0 0;color:#776451;font-size:12px}
+.memory-prompt-row{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 2px}
+.memory-prompt-row button{border:1px solid #cbb99b;background:#f7efe1;color:#5b4836;padding:8px 11px;border-radius:999px;cursor:pointer;font:13px 'Cormorant Garamond',serif}
+.memory-list{display:grid;gap:13px;margin:22px 0}
+.memory-card{position:relative;padding:18px 19px;background:#faf3e6;border:1px solid #d8c8ac;border-left:4px solid #a1814f;box-shadow:0 7px 18px #17243a0a}
+.memory-card .meta{font:10px/1.4 Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#85715a;margin-bottom:8px}
+.memory-card .title{font:600 23px/1.15 'Cormorant Garamond',serif;color:#26364c;margin:0 0 8px}
+.memory-card p{font-size:17px;line-height:1.55;margin:6px 0;white-space:pre-wrap}
+.memory-card .sub{font-size:13px;color:#776a5a}
+.memory-delete{border:0;background:none;padding:0;margin-top:10px;color:#7a5660;text-decoration:underline;cursor:pointer;font:11px Arial,sans-serif}
+.empty-memory{padding:20px;border:1px dashed #cbb99a;color:#766a5b;background:#f8f1e5;font-style:italic;text-align:center}
+
+/* Escolha */
+#escolha{background:radial-gradient(circle at 80% 16%,#7c354333 0,transparent 24%),linear-gradient(#0b1728,#13243c)}
+#escolha .paper{background:linear-gradient(120deg,#fff9ed,#f4e7d2);border-left-color:#7a3945}
+#escolha .choice-hero{padding:25px 0 5px;text-align:center}
+#escolha .choice-hero .choice-symbol{font:60px/1 'Parisienne',cursive;color:#7a3945}
+#escolha .choice-hero blockquote{margin:10px auto 22px;max-width:640px;font:italic 27px/1.35 'Cormorant Garamond',serif;color:#44372d}
+#choice-random{margin:20px 0;padding:21px 22px;background:#fffdf8;border:1px solid #ddccb1;text-align:center;font-size:21px;line-height:1.45;color:#533c3c}
+
+/* Essência */
+#essencia{background:linear-gradient(160deg,#13243c,#0b1728 58%,#1d1a1d)}
+#essencia .paper{background:linear-gradient(90deg,transparent 0,transparent 38px,#9b805133 39px,transparent 40px),#f5eddd}
+.essence-cloud{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.essence-chip{max-width:100%;padding:12px 15px;border:1px solid #d3c0a2;background:#fff9ed;box-shadow:2px 3px 0 #8b734418;color:#493d31}
+.essence-chip strong{display:block;color:#7a3945;font:10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
+.essence-chip button{float:right;border:0;background:none;color:#887668;cursor:pointer;margin-left:10px}
+
+/* Linha do tempo */
+#linha{background:radial-gradient(circle at 50% 0,#273b58 0,#0c192b 60%)}
+#linha .paper{background:#f3ead8}
+.timeline{position:relative;margin:30px 0 10px;padding-left:28px}
+.timeline:before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(#ad8a51,#d9c8a8,#ad8a51)}
+.timeline-item{position:relative;margin:0 0 26px;padding:19px 18px;background:#fffaf0;border:1px solid #d5c3a5;box-shadow:0 8px 20px #0c18270c}
+.timeline-item:before{content:'';position:absolute;width:11px;height:11px;border-radius:50%;left:-26px;top:24px;background:#7a3945;border:3px solid #f3ead8;box-shadow:0 0 0 1px #aa8a58}
+.timeline-item img{width:100%;max-height:390px;object-fit:cover;margin:12px 0 4px;border:8px solid #f9f1e3;box-shadow:0 7px 20px #13243c22}
+.timeline-item .music{font-style:italic;color:#715e48}
+
+/* Marcos */
+#marcos{background:linear-gradient(135deg,#0a1728,#18283d)}
+#marcos .paper{background:linear-gradient(180deg,#f8f0df,#efe1cb)}
+.milestone-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.milestone-card{padding:20px;background:#fffaf0;border:1px solid #d7c3a2;position:relative}
+.milestone-card:after{content:'✦';position:absolute;right:15px;top:11px;color:#b28b4f;font-size:13px}
+
+/* Cápsulas */
+#capsulas{background:radial-gradient(circle at 18% 20%,#813a4838 0,transparent 26%),#091629}
+#capsulas .paper{background:#f3ead7}
+.capsule-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:22px}
+.capsule{position:relative;padding:24px 18px 20px;background:linear-gradient(#f7ead4,#ead8b8);border:1px solid #c9ae80;box-shadow:5px 7px 0 #53341e12;text-align:center}
+.capsule:before{content:'✉';display:block;font-size:34px;color:#71343f;margin-bottom:8px}
+.capsule.sealed{filter:saturate(.9)}
+.capsule .open-date{font:10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.11em;color:#7b674e}
+.capsule p{font-size:16px}
+
+/* Admiração */
+#admiracao{background:linear-gradient(155deg,#14263e,#0b1728)}
+#admiracao .paper{background:linear-gradient(135deg,#fffaf0,#efe3ce)}
+.admiration-wall{columns:2;column-gap:14px;margin-top:24px}
+.admiration-note{break-inside:avoid;margin:0 0 14px;padding:18px;background:#fffdf8;border:1px solid #d8c7ab;box-shadow:3px 4px 0 #6d2c3410;transform:rotate(-.2deg)}
+.admiration-note:nth-child(even){transform:rotate(.25deg)}
+.admiration-note .quote-mark{font:36px/1 Georgia,serif;color:#8a4955}
+
+/* Check-in */
+#checkin{background:linear-gradient(#0b1728,#12243b)}
+#checkin .paper{background:#f4eddf}
+.check-question{margin:15px 0;padding:15px 16px;border-left:2px solid #9b8051;background:#fffaf2}
+.check-question label{margin:0 0 7px;font-size:17px;color:#26364c}
+.checkin-entry details{margin-top:8px}
+.checkin-entry summary{cursor:pointer;color:#6d2c34}
+
+/* lembrar */
+#lembrar{background:radial-gradient(circle at 50% 20%,#264463 0,#0b1728 62%)}
+#lembrar .paper{text-align:center;background:linear-gradient(145deg,#f7efdf,#eadcc4)}
+.remember-oracle{margin:30px auto 20px;padding:32px 26px;max-width:650px;border:1px solid #c8ac7d;background:#fffaf1;box-shadow:0 18px 45px #0b17281c;min-height:180px;display:flex;flex-direction:column;justify-content:center}
+.remember-oracle .star{font-size:28px;color:#b18a4d}
+.remember-oracle p{font-size:24px;line-height:1.45;color:#493b31;margin:11px 0}
+.remember-oracle small{color:#7e6b55}
+
+/* neste dia */
+#neste-dia{background:linear-gradient(160deg,#0d1c30,#172840)}
+#neste-dia .paper{background:#f4ebd9}
+.on-this-day{margin-top:22px}
+.on-this-day .memory-card{border-left-color:#6d2c34}
+
+/* vozes */
+#vozes{background:radial-gradient(circle at 75% 15%,#8d74472c 0,transparent 24%),#0a1728}
+#vozes .paper{background:linear-gradient(180deg,#f7efdf,#eadbc2)}
+.voice-controls{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
+.voice-controls button,.voice-upload{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border:1px solid #9b8051;background:#10213a;color:#f5eddd;cursor:pointer;font:15px 'Cormorant Garamond',serif}
+.voice-upload input{position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden}
+.voice-note audio{width:100%;margin-top:10px}
+.voice-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7a3945;margin-right:6px}
+.voice-dot.recording{animation:pulseVoice 1s infinite}
+@keyframes pulseVoice{50%{transform:scale(1.7);opacity:.4}}
+
+/* refinamentos de navegação para muitos capítulos */
+.drawer-inner{max-height:calc(100vh - 60px);overflow:auto;padding-right:8px}
+.drawer h3{margin-bottom:14px}
+.drawer a{font-size:20px;padding:9px 0}
+.drawer .drawer-section-label{margin:22px 0 5px;color:#c8a96f;font:9px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
+
+@media(max-width:720px){
+ .memory-cover-strip{grid-template-columns:1fr;margin-top:22px}.memory-cover-card{min-height:auto}
+ .memory-form{padding:17px}.memory-form .memory-grid-2,.memory-form .memory-grid-3{grid-template-columns:1fr}
+ .milestone-grid,.capsule-list{grid-template-columns:1fr}.admiration-wall{columns:1}.timeline{padding-left:24px}
+ .timeline-item:before{left:-22px}.memory-intro{font-size:18px}.remember-oracle p{font-size:21px}
+}
