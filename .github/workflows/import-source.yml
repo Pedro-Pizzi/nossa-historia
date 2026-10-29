@@ -1,0 +1,41 @@
+name: Importar sistema revisado
+
+on:
+  push:
+    paths:
+      - .import/source.bundle.b64
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importacao-inicial
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Importar histórico público conferido
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f .import/source.bundle.b64 ]; then
+            echo 'Importação já concluída; nenhum pacote pendente.'
+            exit 0
+          fi
+          base64 --decode .import/source.bundle.b64 > "$RUNNER_TEMP/source.bundle"
+          git bundle verify "$RUNNER_TEMP/source.bundle"
+          git fetch --no-tags "$RUNNER_TEMP/source.bundle" main
+          test "$(git rev-parse FETCH_HEAD)" = 'd2b5be0d46d03c2f7ab014ba65dd7313e3081e70'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git merge --allow-unrelated-histories --no-ff --no-edit FETCH_HEAD
+          git rm .import/source.bundle.b64
+          git commit -m 'Concluir importação e remover pacote temporário do sistema'
+          git push origin HEAD:main
