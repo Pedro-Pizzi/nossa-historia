@@ -1,4 +1,5 @@
 "use client";
+import { useDraftGuard } from "@/lib/storage/use-draft-guard";
 import { useEffect, useState } from "react";
 import type { DateIdea, Entry } from "@/features/shared/types";
 import { isEntry, isRecord } from "@/lib/storage/local-repository";
@@ -16,6 +17,7 @@ export function DateIdeas({ ideas }: { ideas: DateIdea[] }) {
   const [highlight, setHighlight] = useState<number | null>(null);
   const [note, setNote] = useState("");
   const [message, setMessage] = useState("");
+  const draft = useDraftGuard();
   const completed = useServerRepository<Record<string, boolean>>("nossa-historia-desafios-v1", {}, isCompleted);
   const notes = useServerRepository<Entry[]>("nossa-historia-convites-v1", [], isNotes);
   const visible = ideas.map((idea, index) => ({ idea, index })).filter(({ idea }) => filter === "all" || idea[2] === filter);
@@ -25,6 +27,6 @@ export function DateIdeas({ ideas }: { ideas: DateIdea[] }) {
     <div className="challenge-filters" role="group" aria-label="Categoria de encontro">{Object.entries(filters).map(([key, label]) => <button type="button" data-challenge-filter={key} aria-pressed={key === filter} key={key} onClick={() => { setFilter(key); setDrawn(null); }}>{label}</button>)}</div>
     <Status error={completed.error} />
     <div id="challenge-grid" className="challenge-grid">{visible.map(({ idea, index }) => <div id={`challenge-idea-${index}`} key={index} className={`challenge-card${completed.value[index] ? " done" : ""}${highlight === index ? " draw-highlight" : ""}`}><span className="challenge-type">♡ {filters[idea[2] as keyof typeof filters]} · {String(index + 1).padStart(2, "0")}</span><h3>{idea[0]}</h3><p>{idea[1]}</p><button type="button" aria-pressed={!!completed.value[index]} disabled={!completed.ready || !!completed.error} onClick={() => completed.update((current) => ({ ...current, [index]: !current[index] }))}>{completed.value[index] ? "♡ Já vivemos isso · desfazer" : "♡ Quero viver isso"}</button></div>)}</div>
-    <form className="diary-letter" onSubmit={async (event) => { event.preventDefault(); if (!note.trim()) { setMessage("Escrevam a ideia quando quiserem ♡"); return; } if (await notes.update((current) => [...current, { text: note.trim(), date: new Date().toISOString() }])) { setNote(""); setMessage("Convite guardado ♡"); } }}><h3>Uma ideia só nossa</h3><p>Um plano simples que nasceu na cabeça de vocês e merece ficar guardado para outro dia.</p><textarea aria-label="Uma ideia só nossa" value={note} onChange={(event) => setNote(event.target.value)} /><button className="book-save" type="submit" disabled={!notes.ready || !!notes.error}>♡ Guardar nosso convite</button><Status error={notes.error} message={message} /><div>{notes.value.map((entry, index) => <div className="comfort-card" key={`${entry.date}-${index}`}><p className="preserve-lines">{entry.text}</p>{entry.author===user.name ? <DeleteButton onDelete={() => notes.update((current) => current.filter((_, i) => i !== index))}>Apagar convite</DeleteButton> : null}</div>)}</div></form>
+    <form className="diary-letter" onChangeCapture={draft.edit} onSubmit={async (event) => { event.preventDefault(); if (!note.trim()) { setMessage("Escrevam a ideia quando quiserem ♡"); return; } const clearDraft = draft.capture(); if (await notes.update((current) => [...current, { text: note.trim(), date: new Date().toISOString() }])) { clearDraft(() => setNote("")); setMessage("Convite guardado ♡"); } }}><h3>Uma ideia só nossa</h3><p>Um plano simples que nasceu na cabeça de vocês e merece ficar guardado para outro dia.</p><textarea aria-label="Uma ideia só nossa" value={note} onChange={(event) => setNote(event.target.value)} /><button className="book-save" type="submit" disabled={!notes.ready || !!notes.error}>♡ Guardar nosso convite</button><Status error={notes.error} message={message} /><div>{notes.value.map((entry, index) => <div className="comfort-card" key={`${entry.date}-${index}`}><p className="preserve-lines">{entry.text}</p>{entry.author===user.name ? <DeleteButton onDelete={() => notes.update((current) => current.filter((_, i) => i !== index))}>Apagar convite</DeleteButton> : null}</div>)}</div></form>
   </>;
 }

@@ -1,4 +1,5 @@
 "use client";
+import { useDraftGuard } from "@/lib/storage/use-draft-guard";
 
 import { useEffect, useRef, useState } from "react";
 import { isEntryMap } from "@/lib/storage/local-repository";
@@ -53,12 +54,14 @@ function NotebookEditor({ kind, draftKey, title, description, prompts, ready, on
   const [message, setMessage] = useState("");
   const [draftError, setDraftError] = useState("");
   const textarea = useRef<HTMLTextAreaElement>(null);
+  const draft = useDraftGuard();
   useEffect(() => { try { setText(localStorage.getItem(draftKey) || ""); } catch { setDraftError("Não foi possível recuperar o rascunho."); } }, [draftKey]);
-  function edit(value: string) { setText(value); try { localStorage.setItem(draftKey, value); setDraftError(""); } catch { setDraftError("O rascunho ainda não foi salvo. Mantenha esta página aberta."); } }
+  function edit(value: string) { draft.edit(); setText(value); try { localStorage.setItem(draftKey, value); setDraftError(""); } catch { setDraftError("O rascunho ainda não foi salvo. Mantenha esta página aberta."); } }
   return <form className="book-sheet" onSubmit={async (event) => {
     event.preventDefault();
     if (!text.trim()) { setMessage("Pode escrever quando sentir vontade. ♡"); textarea.current?.focus(); return; }
-    if (await onSave(text.trim())) { edit(""); setMessage("Página guardada com carinho ♡"); }
+    const clearDraft = draft.capture();
+    if (await onSave(text.trim())) { clearDraft(() => edit("")); setMessage("Página guardada com carinho ♡"); }
   }}>
     <h3>{title}</h3><p>{description}</p>
     <div className="book-prompt">{prompts.map((prompt) => <button key={prompt} type="button" onClick={() => { edit(text + (text ? "\n\n" : "") + prompt + "\n"); textarea.current?.focus(); }}>{prompt}</button>)}</div>

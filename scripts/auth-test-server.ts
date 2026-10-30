@@ -14,7 +14,8 @@ export async function startAuthTestServer({ production = true, configured = true
   const origin = `http://127.0.0.1:${port}`;
   const passwords = testPasswords || { ana: randomBytes(20).toString("hex"), pedro: randomBytes(20).toString("hex") };
   const directory=configured?await mkdtemp(path.join(tmpdir(),"nh-db-fixture-")):undefined;
-  const env = { ...process.env, DATABASE_MODE:configured?"pglite":"",DATABASE_PATH:directory||"",DATABASE_URL:"", NODE_ENV: production ? "production" : "development", AUTH_ORIGIN: origin, AUTH_SESSION_SECRET: configured ? randomBytes(48).toString("hex") : "", AUTH_ANA_PASSWORD_HASH: configured ? await hashPassword(passwords.ana) : "", AUTH_PEDRO_PASSWORD_HASH: configured ? await hashPassword(passwords.pedro) : "" };
+  // Isolar a configuração descartável: o Next não deve ler o .env.local pessoal.
+  const env = { ...process.env, __NEXT_PROCESSED_ENV:"true", DATABASE_MODE:configured?"pglite":"",DATABASE_PATH:directory||"",DATABASE_URL:"", NODE_ENV: production ? "production" : "development", AUTH_ORIGIN: origin, AUTH_SESSION_SECRET: configured ? randomBytes(48).toString("hex") : "", AUTH_ANA_PASSWORD_HASH: configured ? await hashPassword(passwords.ana) : "", AUTH_PEDRO_PASSWORD_HASH: configured ? await hashPassword(passwords.pedro) : "" };
   if(configured){const db=await createDatabase(env);try{await migrate(db);const content=await testBook();await importBook(db,content.book,content.assets);}finally{await db.close();}}
   const launch=()=>spawn(process.execPath, [path.resolve("node_modules/next/dist/bin/next"), production ? "start" : "dev", "--hostname", "127.0.0.1", "--port", String(port)], { cwd: process.cwd(), env, windowsHide: true, stdio: ["ignore", "pipe", "pipe"] });
   let child = launch();

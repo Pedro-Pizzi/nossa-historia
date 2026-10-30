@@ -1,4 +1,5 @@
 "use client";
+import { useDraftGuard } from "@/lib/storage/use-draft-guard";
 import { useState } from "react";
 import { useServerRepository } from "@/lib/storage/use-server-repository";
 import { isRecord } from "@/lib/storage/local-repository";
@@ -16,9 +17,10 @@ export function LetterBox() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [message, setMessage] = useState("");
+  const draft = useDraftGuard();
   const [opened, setOpened] = useState<Set<number>>(new Set());
   return <>
-    <form className="diary-letter" onSubmit={async (event) => { event.preventDefault(); if (!body.trim()) { setMessage("Escreva algumas palavras antes de guardar ♡"); return; } if (await letters.update((current) => [...current, { from, to, title: title.trim() || "Um abraço só para você", body: body.trim(), date: new Date().toISOString() }])) { setTitle(""); setBody(""); setMessage("Sua cartinha está guardada ♡"); } }}>
+    <form className="diary-letter" onChangeCapture={draft.edit} onSubmit={async (event) => { event.preventDefault(); if (!body.trim()) { setMessage("Escreva algumas palavras antes de guardar ♡"); return; } const clearDraft = draft.capture(); if (await letters.update((current) => [...current, { from, to, title: title.trim() || "Um abraço só para você", body: body.trim(), date: new Date().toISOString() }])) { clearDraft(() => { setTitle(""); setBody(""); }); setMessage("Sua cartinha está guardada ♡"); } }}>
       <h3>Uma cartinha guardada especialmente para você</h3><p>Escreva para que o outro encontre estas palavras quando precisar. Pode ser uma declaração, uma lembrança engraçada, um elogio ou um abraço por escrito.</p>
       <div className="letter-fields"><PersonSelect label="Quem escreve?" value={from} onChange={() => undefined} /><PersonSelect identity={false} label="Para quem?" value={to} onChange={(person) => setTo(person as Person)} /></div>
       <label htmlFor="comfort-title">Título da cartinha</label><input id="comfort-title" maxLength={120} value={title} onChange={(event) => setTitle(event.target.value)} placeholder="Para quando você precisar de um abraço..." />

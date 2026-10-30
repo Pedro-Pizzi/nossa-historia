@@ -1,4 +1,5 @@
 "use client";
+import { useDraftGuard } from "@/lib/storage/use-draft-guard";
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import type { Answers, Person, Question, QuestionSection } from "@/features/shared/types";
@@ -49,12 +50,13 @@ function QuestionCard({ question, author, entries, ready, onSave, onDelete }: { 
   const [message, setMessage] = useState("");
   const [draftError, setDraftError] = useState("");
   const field = useRef<HTMLTextAreaElement>(null);
+  const draft = useDraftGuard();
   const key = `love-draft-${author}-${question.id}`;
   useEffect(() => { try { setText(localStorage.getItem(key) || ""); } catch { setDraftError("Não foi possível recuperar o rascunho."); } }, [key]);
   useEffect(() => { if (open) field.current?.focus(); }, [open]);
-  function edit(value: string) { setText(value); try { localStorage.setItem(key, value); setDraftError(""); } catch { setDraftError("O rascunho ainda não foi salvo neste navegador."); } }
+  function edit(value: string) { draft.edit(); setText(value); try { localStorage.setItem(key, value); setDraftError(""); } catch { setDraftError("O rascunho ainda não foi salvo neste navegador."); } }
   return <div className="love-question"><button className="love-question-head" type="button" aria-expanded={open} aria-controls={`love-${question.id}`} onClick={() => setOpen(!open)}><span>♡</span> {question.text}<small>{entries.length ? `${entries.length} resposta(s) guardada(s) ♡` : "Escrever quando quiser ↗"}</small></button>
-    <div className="love-answer" id={`love-${question.id}`} hidden={!open}><form onSubmit={async (event) => { event.preventDefault(); if (!text.trim()) { setMessage("Pode escrever depois, sem pressa ♡"); return; } if (await onSave(text.trim())) { edit(""); setMessage("Sua resposta foi guardada ♡"); } }}><label htmlFor={`write-${question.id}`}>{question.label}</label><textarea ref={field} id={`write-${question.id}`} placeholder={question.placeholder} value={text} onChange={(event) => edit(event.target.value)} /><button className="save" type="submit" disabled={!ready}>Guardar minha resposta ♡</button><Status error={draftError} message={message} /></form>
+    <div className="love-answer" id={`love-${question.id}`} hidden={!open}><form onSubmit={async (event) => { event.preventDefault(); if (!text.trim()) { setMessage("Pode escrever depois, sem pressa ♡"); return; } const clearDraft = draft.capture(); if (await onSave(text.trim())) { clearDraft(() => edit("")); setMessage("Sua resposta foi guardada ♡"); } }}><label htmlFor={`write-${question.id}`}>{question.label}</label><textarea ref={field} id={`write-${question.id}`} placeholder={question.placeholder} value={text} onChange={(event) => edit(event.target.value)} /><button className="save" type="submit" disabled={!ready}>Guardar minha resposta ♡</button><Status error={draftError} message={message} /></form>
       <div className="love-history">{entries.map((entry, index) => <div key={`${entry.date}-${index}`}><div className="meta">{entry.author} · {formatDate(entry.date)}</div><p className="preserve-lines">{entry.text}</p>{entry.author === author ? <DeleteButton onDelete={() => onDelete(index)}>Apagar esta resposta</DeleteButton> : null}</div>)}</div>
     </div>
   </div>;

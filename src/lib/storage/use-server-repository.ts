@@ -1,5 +1,6 @@
 "use client";
 import { useEffect,useRef,useState } from "react";
+import { applyCollectionDelta,collectionChanges } from "./collection-changes";
 
 const EVENT="nossa-historia:server-records";
 export function useServerRepository<T>(key:string,initial:T,validate:(value:unknown)=>value is T){
@@ -27,11 +28,14 @@ export function useServerRepository<T>(key:string,initial:T,validate:(value:unkn
     try{
       const next=updater(structuredClone(snapshot.current.value));
       if(!validate(next))throw new Error("Confira o formato do registro.");
-      const response=await fetch(`/api/collections/${encodeURIComponent(key)}`,{method:"PUT",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({revision:snapshot.current.revision,value:next})});
+      const previous=snapshot.current;
+      const changes=collectionChanges(key,previous.value,next);
+      const response=await fetch(`/api/collections/${encodeURIComponent(key)}`,{method:"PATCH",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({revision:previous.revision,...changes})});
       const result=await response.json();
       if(!response.ok){if(response.status===409){busy.current=false;await refreshRef.current();busy.current=true;}throw new Error(result.message||"Não foi possível guardar. Seu texto continua nesta página.");}
-      if(!validate(result.value))throw new Error("Não foi possível confirmar o registro salvo.");
-      snapshot.current=result;setValue(result.value);setError("");
+      const saved=applyCollectionDelta(key,previous.value,result);
+      if(!validate(saved))throw new Error("Não foi possível confirmar o registro salvo.");
+      snapshot.current={revision:result.revision,value:saved};setValue(saved);setError("");
       window.dispatchEvent(new CustomEvent(EVENT,{detail:key}));const channel=typeof BroadcastChannel!=="undefined"?new BroadcastChannel("nossa-historia-records"):null;channel?.postMessage(key);channel?.close();
       return true;
     }catch(cause){setError(cause instanceof Error?cause.message:"Não foi possível guardar. Seu texto continua nesta página.");return false;}

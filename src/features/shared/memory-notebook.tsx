@@ -1,4 +1,5 @@
 "use client";
+import { useDraftGuard } from "@/lib/storage/use-draft-guard";
 import { useEffect, useState } from "react";
 import { useServerRepository } from "@/lib/storage/use-server-repository";
 import { memoryKeys, memoryValidators, type MemoryKind, type MemoryRecord } from "./memory-model";
@@ -15,17 +16,19 @@ export function MemoryNotebook({ kind }: { kind: MemoryKind }) {
   const [date, setDate] = useState("");
   const [type, setType] = useState("Uma primeira vez");
   const [message, setMessage] = useState("");
+  const draft = useDraftGuard();
   useEffect(() => setDate(today()), []);
   const ordered = records.value.map((entry, index) => ({ entry, index })).sort((a, b) => kind === "milestone" ? b.entry.date.localeCompare(a.entry.date) : b.index - a.index);
   return <>
     {kind === "choice" ? <div id="choice-random">{records.value.length ? `“${records.value[0].text}”` : "O primeiro motivo que vocês guardarem pode morar aqui. ♡"}</div> : null}
-    <form className="memory-form" onSubmit={async (event) => {
+    <form className="memory-form" onChangeCapture={draft.edit} onSubmit={async (event) => {
       event.preventDefault();
       if (kind === "choice" && !text.trim()) { setMessage("Escreva um motivo, mesmo que seja bem pequeno. ♡"); return; }
       if (kind === "milestone" && (!title.trim() || !text.trim())) { setMessage("Conte qual foi o marco e por que ele importa."); return; }
       if (kind === "checkin" && !text.trim() && !better.trim()) { setMessage("Escreva como vocês estão ou o que gostariam de tentar diferente."); return; }
+      const clearDraft = draft.capture();
       const entry: MemoryRecord = { id: id(), author, date: kind === "milestone" ? date : new Date().toISOString(), ...(kind === "checkin" ? { good: text.trim(), better: better.trim() } : { text: text.trim() }), ...(kind === "milestone" ? { title: title.trim(), kind: type } : {}) };
-      if (await records.update((current) => [...current, entry])) { setText(""); setBetter(""); setTitle(""); setMessage(kind === "choice" ? "Mais um motivo ficou guardado. ♡" : kind === "milestone" ? "Capítulo guardado. ♡" : "Este recomeço ficou guardado. ♡"); }
+      if (await records.update((current) => [...current, entry])) { clearDraft(() => { setText(""); setBetter(""); setTitle(""); }); setMessage(kind === "choice" ? "Mais um motivo ficou guardado. ♡" : kind === "milestone" ? "Capítulo guardado. ♡" : "Este recomeço ficou guardado. ♡"); }
     }}>
       <h3>{kind === "choice" ? "Quero guardar mais um motivo…" : kind === "milestone" ? "Acrescentar um momento à nossa linha do tempo" : "Como estamos hoje?"}</h3>
       {kind === "milestone" ? <div className="memory-grid-3"><label>Tipo<select value={type} onChange={(event) => setType(event.target.value)}>{["Uma primeira vez", "Um marco nosso", "Uma conquista", "Algo que superamos", "Uma nova fase"].map((value) => <option key={value}>{value}</option>)}</select></label><label>Data<input type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label><PersonSelect value={author} onChange={() => undefined} label="Quem escreve?" /></div> : <PersonSelect value={author} onChange={() => undefined} />}

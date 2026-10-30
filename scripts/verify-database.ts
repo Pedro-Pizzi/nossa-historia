@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { startAuthTestServer } from "./auth-test-server";
+import { applyCollectionDelta,collectionChanges } from "../src/lib/storage/collection-changes";
 async function main(){
  const server=await startAuthTestServer();const base=server.origin;let ana="",pedro="";
  const get=(path:string,cookie?:string)=>fetch(base+path,{headers:cookie?{cookie}:{},redirect:"manual"});
@@ -38,6 +39,26 @@ async function main(){
   const reopened=await(await get(url,pedro)).json();assert.equal(reopened.value["Ana|day"][0].text,"Registro persistente da Ana");assert.equal((await get("/api/photos/"+photo.id,pedro)).status,200);
   assert.equal((await fetch(base+"/api/photos/"+photo.id,{method:"DELETE",headers:{origin:base,cookie:ana}})).status,204);
   console.log("Persistência: sessões, registros e fotos sobreviveram ao reinício real do processo Next.js.");
+  const largeEntries=Array.from({length:1000},(_,index)=>({text:String(index).padStart(4,"0")+"a".repeat(1996),date:"2026-10-30"}));
+  const largeImport={key:collection,value:{"Ana|favorites-books":largeEntries}};
+  assert.ok(Buffer.byteLength(JSON.stringify(largeImport))<2*1024*1024);
+  assert.equal((await json("/api/import","POST",largeImport,ana)).status,200);
+  const large=await(await get(url,ana)).json();assert.ok(Buffer.byteLength(JSON.stringify(large))>2*1024*1024);
+  const changes=collectionChanges(collection,large.value,{...large.value,"Ana|day":[...large.value["Ana|day"],{text:"Nova página em um acervo grande",date:"2026-10-30"}]});
+  const patch={revision:large.revision,...changes};assert.ok(Buffer.byteLength(JSON.stringify(patch))<1024);
+  assert.equal((await json(url,"PATCH",patch)).status,401);
+  assert.equal((await fetch(base+url,{method:"PATCH",headers:{origin:"https://outro.example",cookie:ana,"Content-Type":"application/json"},body:JSON.stringify(patch)})).status,403);
+  const created=await json(url,"PATCH",patch,ana);assert.equal(created.status,200);
+  const delta=await created.json();assert.ok(Buffer.byteLength(JSON.stringify(delta))<1024);
+  const saved={revision:delta.revision,value:applyCollectionDelta(collection,large.value,delta)};
+  assert.deepEqual(await(await get(url,pedro)).json(),saved);
+  const remove={revision:saved.revision,...collectionChanges(collection,saved.value,large.value)};
+  assert.equal((await json(url,"PATCH",remove,pedro)).status,403);
+  assert.equal((await json(url,"PATCH",patch,ana)).status,409);
+  const removed=await json(url,"PATCH",remove,ana);assert.equal(removed.status,200);
+  const finalDelta=await removed.json();assert.deepEqual(applyCollectionDelta(collection,saved.value,finalDelta),large.value);
+  assert.deepEqual((await(await get(url,ana)).json()).value,large.value);
+  console.log("Acervo acima de 2 MiB: inclusão e exclusão por HTTP passaram com requisições menores que 1 KiB, mantendo autoria e conflitos.");
  }finally{await server.stop();}
 }
 main().catch((error:unknown)=>{console.error(error instanceof Error?error.message:"Falha na verificação do banco.");process.exitCode=1;});
