@@ -12,7 +12,23 @@ No Railway, o banco é um serviço PostgreSQL separado. Se optar também por hos
 
 Use `DATABASE_MODE=postgres`, a URI em `DATABASE_URL`, `AUTH_ORIGIN` com a origem HTTPS exata, `AUTH_SESSION_SECRET`, `AUTH_ANA_PASSWORD_HASH` e `AUTH_PEDRO_PASSWORD_HASH`. O configurador `pnpm auth:setup` gera os hashes e o segredo localmente. Não há senhas padrão; não publique `.env.local` nem use prefixo `NEXT_PUBLIC_` para segredos.
 
-Conexões remotas usam TLS verificado. Quando o PostgreSQL tem certificado próprio, configure `DATABASE_SSL_CERT` com o PEM do servidor para fixá-lo por fingerprint, ou `DATABASE_SSL_CA` para uma autoridade própria. Não desative a verificação TLS. Vercel precisa de uma conexão externa ao banco; a rede privada Railway só atende serviços daquela rede.
+Conexões remotas usam TLS verificado. Configure `DATABASE_SSL_CERT` com o PEM do servidor para fixá-lo por fingerprint e `DATABASE_SSL_CA` com o certificado raiz quando o servidor é assinado por uma autoridade própria. Os dois podem ser usados juntos: a CA valida a cadeia e o fingerprint identifica o servidor. Não desative a verificação TLS. Vercel precisa de uma conexão externa ao banco; a rede privada Railway só atende serviços daquela rede.
+
+## Operação pelos CLIs neste computador
+
+Os executáveis locais ficam em `%LOCALAPPDATA%/NossaHistoria`, fora do projeto e do OneDrive. O atalho encaminha os argumentos ao CLI oficial, usando as sessões autenticadas:
+
+```powershell
+.\servicos.ps1 github auth status
+.\servicos.ps1 railway status
+.\servicos.ps1 vercel project inspect nossa-historia
+```
+
+Depois de vincular o diretório aos dois projetos, `pnpm exec tsx scripts/configure-production.ts --origin https://seu-dominio.vercel.app` lê a conexão pelo Railway CLI, valida os certificados públicos em `%LOCALAPPDATA%/NossaHistoria/certs`, aplica as migrações e importa o pacote privado. Em seguida, cadastra as variáveis **somente de produção** pelo Vercel CLI, enviando os valores por stdin, sem colocá-los nos argumentos ou imprimir seus conteúdos.
+
+Se os acessos locais já existem, seus hashes e segredo são preservados. Se ainda não existem, o configurador gera senhas individuais aleatórias e guarda a cópia de entrega em `%LOCALAPPDATA%/NossaHistoria/private/acessos.json`. Esse arquivo contém as senhas de entrada: mantenha-o privado e fora do Git. `.env.local` guarda somente hashes, segredo e conexão, com origem local para desenvolvimento. Na Vercel, a origem é o domínio HTTPS informado. Não são configurados segredos de produção para previews de pull requests.
+
+O `.vercelignore` também exclui o documento original, o pacote privado, fotos, capítulos antigos, backups e variáveis locais dos envios pelo CLI. `vercel deploy --dry --json` permite revisar a lista antes da publicação. A integração GitHub usa apenas a branch do sistema, sem esses arquivos.
 
 ## Migrar o conteúdo privado uma vez
 

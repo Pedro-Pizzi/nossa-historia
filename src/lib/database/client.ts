@@ -23,7 +23,8 @@ export async function createDatabase(env: Record<string, string | undefined>): P
   // Remover opções da URI que poderiam substituir a verificação TLS explícita.
   for (const name of ["sslmode", "sslcert", "sslkey", "sslrootcert", "ssl"]) url.searchParams.delete(name);
   const pinned=env.DATABASE_SSL_CERT?new X509Certificate(env.DATABASE_SSL_CERT.replace(/\\n/g,"\n")):undefined;
-  const pool = new Pool({ connectionString: url.toString(), max: 4, idleTimeoutMillis: 10000, connectionTimeoutMillis: 10000, statement_timeout: 15000, ssl: local && env.NODE_ENV !== "production" ? false : { rejectUnauthorized: true, ...(pinned?{ca:pinned.toString(),checkServerIdentity:(_hostname:string,certificate:{fingerprint256?:string})=>certificate.fingerprint256===pinned.fingerprint256?undefined:new Error("O certificado do banco não corresponde ao configurado.")}:env.DATABASE_SSL_CA ? { ca: env.DATABASE_SSL_CA.replace(/\\n/g, "\n") } : {}) } });
+  const ca=env.DATABASE_SSL_CA?.replace(/\\n/g,"\n");
+  const pool = new Pool({ connectionString: url.toString(), max: 4, idleTimeoutMillis: 10000, connectionTimeoutMillis: 10000, statement_timeout: 15000, ssl: local && env.NODE_ENV !== "production" ? false : { rejectUnauthorized: true, ...(pinned?{ca:ca||pinned.toString(),checkServerIdentity:(_hostname:string,certificate:{fingerprint256?:string})=>certificate.fingerprint256===pinned.fingerprint256?undefined:new Error("O certificado do banco não corresponde ao configurado.")}:ca ? { ca } : {}) } });
   pool.on("error", () => { /* Não registrar URI, credenciais ou conteúdo pessoal. */ });
   return {
     async query<T>(sql: string, params: unknown[] = []) { return { rows: (await pool.query(sql, params)).rows as T[] }; },

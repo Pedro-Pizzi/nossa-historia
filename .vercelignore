@@ -1,0 +1,23 @@
+.git/
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+.env*
+!.env.example
+.vercel/
+/Nossa Historia
+/artifacts/
+/backups/
+/.data/
+/content/private/
+/content/story/
+/content/legacy/*
+!/content/legacy/styles/
+/src/features/*/components/*-chapter.tsx
+/docs/railway-preparacao.json
+/docs/etapa-[1234].md
+/docs/arquitetura.md
+/scripts/migrate-components.mjs
